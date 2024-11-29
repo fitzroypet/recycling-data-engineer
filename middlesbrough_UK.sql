@@ -4,6 +4,7 @@ DECLARE @ErrorLog TABLE (BusinessName NVARCHAR(255), ErrorMessage NVARCHAR(MAX))
 BEGIN TRY
     BEGIN TRANSACTION;
 
+        IF NOT EXISTS (SELECT 1 FROM recycling.Businesses WHERE PlaceID = 'ChIJ7wv47FvtfkgR55MLtHRlRtI')
         BEGIN TRY
             DECLARE @BusinessID_0 INT;
             
@@ -119,9 +120,11 @@ BEGIN TRY
         BEGIN CATCH
             INSERT INTO @ErrorLog (BusinessName, ErrorMessage)
             VALUES ('Household Waste Recycling Centre', ERROR_MESSAGE());
+            PRINT 'Skipping existing business with PlaceID: ' + 'ChIJ7wv47FvtfkgR55MLtHRlRtI';
         END CATCH
         
 
+        IF NOT EXISTS (SELECT 1 FROM recycling.Businesses WHERE PlaceID = 'ChIJVfjWreDtfkgRP_qINIgvy_g')
         BEGIN TRY
             DECLARE @BusinessID_1 INT;
             
@@ -167,9 +170,11 @@ BEGIN TRY
         BEGIN CATCH
             INSERT INTO @ErrorLog (BusinessName, ErrorMessage)
             VALUES ('Palm Recycling', ERROR_MESSAGE());
+            PRINT 'Skipping existing business with PlaceID: ' + 'ChIJVfjWreDtfkgRP_qINIgvy_g';
         END CATCH
         
 
+        IF NOT EXISTS (SELECT 1 FROM recycling.Businesses WHERE PlaceID = 'ChIJCd_O6E_tfkgRi4Zweue5c4k')
         BEGIN TRY
             DECLARE @BusinessID_2 INT;
             
@@ -301,9 +306,11 @@ BEGIN TRY
         BEGIN CATCH
             INSERT INTO @ErrorLog (BusinessName, ErrorMessage)
             VALUES ('Haverton Hill Recyclying Centre', ERROR_MESSAGE());
+            PRINT 'Skipping existing business with PlaceID: ' + 'ChIJCd_O6E_tfkgRi4Zweue5c4k';
         END CATCH
         
 
+        IF NOT EXISTS (SELECT 1 FROM recycling.Businesses WHERE PlaceID = 'ChIJB1x-76_yfkgR5jslLplxatM')
         BEGIN TRY
             DECLARE @BusinessID_3 INT;
             
@@ -340,14 +347,6 @@ BEGIN TRY
             INSERT INTO recycling.BusinessMaterials (
                 BusinessID, MaterialID, CategoryName, Description, IsVerified
             )
-            SELECT @BusinessID_3, MaterialID, 'metal', 'Mixed Metals', 1
-            FROM recycling.Materials
-            WHERE Description = 'Mixed Metals';
-            
-
-            INSERT INTO recycling.BusinessMaterials (
-                BusinessID, MaterialID, CategoryName, Description, IsVerified
-            )
             SELECT @BusinessID_3, MaterialID, 'plastic', 'PP', 1
             FROM recycling.Materials
             WHERE Description = 'PP';
@@ -369,6 +368,14 @@ BEGIN TRY
             WHERE Description = 'PS';
             
 
+            INSERT INTO recycling.BusinessMaterials (
+                BusinessID, MaterialID, CategoryName, Description, IsVerified
+            )
+            SELECT @BusinessID_3, MaterialID, 'metal', 'Mixed Metals', 1
+            FROM recycling.Materials
+            WHERE Description = 'Mixed Metals';
+            
+
             INSERT INTO recycling.BusinessServices (
                 BusinessID, ServiceName, Description
             ) VALUES (
@@ -381,9 +388,11 @@ BEGIN TRY
         BEGIN CATCH
             INSERT INTO @ErrorLog (BusinessName, ErrorMessage)
             VALUES ('Thirteen Recycling Centre', ERROR_MESSAGE());
+            PRINT 'Skipping existing business with PlaceID: ' + 'ChIJB1x-76_yfkgR5jslLplxatM';
         END CATCH
         
 
+        IF NOT EXISTS (SELECT 1 FROM recycling.Businesses WHERE PlaceID = 'ChIJK5K-Z0_tfkgR8UAhj68WQJI')
         BEGIN TRY
             DECLARE @BusinessID_4 INT;
             
@@ -490,25 +499,9 @@ BEGIN TRY
             INSERT INTO recycling.BusinessMaterials (
                 BusinessID, MaterialID, CategoryName, Description, IsVerified
             )
-            SELECT @BusinessID_4, MaterialID, 'plastic', 'PP', 1
+            SELECT @BusinessID_4, MaterialID, 'glass', 'Glass', 1
             FROM recycling.Materials
-            WHERE Description = 'PP';
-            
-
-            INSERT INTO recycling.BusinessMaterials (
-                BusinessID, MaterialID, CategoryName, Description, IsVerified
-            )
-            SELECT @BusinessID_4, MaterialID, 'paper', 'Mixed Paper (general)', 1
-            FROM recycling.Materials
-            WHERE Description = 'Mixed Paper (general)';
-            
-
-            INSERT INTO recycling.BusinessMaterials (
-                BusinessID, MaterialID, CategoryName, Description, IsVerified
-            )
-            SELECT @BusinessID_4, MaterialID, 'plastic', 'Mixed Plastics', 1
-            FROM recycling.Materials
-            WHERE Description = 'Mixed Plastics';
+            WHERE Description = 'Glass';
             
 
             INSERT INTO recycling.BusinessMaterials (
@@ -522,9 +515,25 @@ BEGIN TRY
             INSERT INTO recycling.BusinessMaterials (
                 BusinessID, MaterialID, CategoryName, Description, IsVerified
             )
-            SELECT @BusinessID_4, MaterialID, 'glass', 'Glass', 1
+            SELECT @BusinessID_4, MaterialID, 'plastic', 'Mixed Plastics', 1
             FROM recycling.Materials
-            WHERE Description = 'Glass';
+            WHERE Description = 'Mixed Plastics';
+            
+
+            INSERT INTO recycling.BusinessMaterials (
+                BusinessID, MaterialID, CategoryName, Description, IsVerified
+            )
+            SELECT @BusinessID_4, MaterialID, 'plastic', 'PP', 1
+            FROM recycling.Materials
+            WHERE Description = 'PP';
+            
+
+            INSERT INTO recycling.BusinessMaterials (
+                BusinessID, MaterialID, CategoryName, Description, IsVerified
+            )
+            SELECT @BusinessID_4, MaterialID, 'paper', 'Mixed Paper (general)', 1
+            FROM recycling.Materials
+            WHERE Description = 'Mixed Paper (general)';
             
 
             INSERT INTO recycling.BusinessServices (
@@ -539,9 +548,11 @@ BEGIN TRY
         BEGIN CATCH
             INSERT INTO @ErrorLog (BusinessName, ErrorMessage)
             VALUES ('SUEZ recycling and recovery UK', ERROR_MESSAGE());
+            PRINT 'Skipping existing business with PlaceID: ' + 'ChIJK5K-Z0_tfkgR8UAhj68WQJI';
         END CATCH
         
 
+        IF NOT EXISTS (SELECT 1 FROM recycling.Businesses WHERE PlaceID = 'ChIJxfQdXkHtfkgRbJWz2h5Salg')
         BEGIN TRY
             DECLARE @BusinessID_5 INT;
             
@@ -657,9 +668,11 @@ BEGIN TRY
         BEGIN CATCH
             INSERT INTO @ErrorLog (BusinessName, ErrorMessage)
             VALUES ('CNC Recycling Ltd', ERROR_MESSAGE());
+            PRINT 'Skipping existing business with PlaceID: ' + 'ChIJxfQdXkHtfkgRbJWz2h5Salg';
         END CATCH
         
 
+        IF NOT EXISTS (SELECT 1 FROM recycling.Businesses WHERE PlaceID = 'ChIJaQ86d1ztfkgRx1e__k00qF8')
         BEGIN TRY
             DECLARE @BusinessID_6 INT;
             
@@ -775,9 +788,11 @@ BEGIN TRY
         BEGIN CATCH
             INSERT INTO @ErrorLog (BusinessName, ErrorMessage)
             VALUES ('Scott Bros Recycling', ERROR_MESSAGE());
+            PRINT 'Skipping existing business with PlaceID: ' + 'ChIJaQ86d1ztfkgRx1e__k00qF8';
         END CATCH
         
 
+        IF NOT EXISTS (SELECT 1 FROM recycling.Businesses WHERE PlaceID = 'ChIJDdHbbWztfkgRfxZB6PrexyY')
         BEGIN TRY
             DECLARE @BusinessID_7 INT;
             
@@ -884,25 +899,9 @@ BEGIN TRY
             INSERT INTO recycling.BusinessMaterials (
                 BusinessID, MaterialID, CategoryName, Description, IsVerified
             )
-            SELECT @BusinessID_7, MaterialID, 'plastic', 'PP', 1
+            SELECT @BusinessID_7, MaterialID, 'glass', 'Glass', 1
             FROM recycling.Materials
-            WHERE Description = 'PP';
-            
-
-            INSERT INTO recycling.BusinessMaterials (
-                BusinessID, MaterialID, CategoryName, Description, IsVerified
-            )
-            SELECT @BusinessID_7, MaterialID, 'paper', 'Mixed Paper (general)', 1
-            FROM recycling.Materials
-            WHERE Description = 'Mixed Paper (general)';
-            
-
-            INSERT INTO recycling.BusinessMaterials (
-                BusinessID, MaterialID, CategoryName, Description, IsVerified
-            )
-            SELECT @BusinessID_7, MaterialID, 'plastic', 'Mixed Plastics', 1
-            FROM recycling.Materials
-            WHERE Description = 'Mixed Plastics';
+            WHERE Description = 'Glass';
             
 
             INSERT INTO recycling.BusinessMaterials (
@@ -924,9 +923,25 @@ BEGIN TRY
             INSERT INTO recycling.BusinessMaterials (
                 BusinessID, MaterialID, CategoryName, Description, IsVerified
             )
-            SELECT @BusinessID_7, MaterialID, 'glass', 'Glass', 1
+            SELECT @BusinessID_7, MaterialID, 'plastic', 'Mixed Plastics', 1
             FROM recycling.Materials
-            WHERE Description = 'Glass';
+            WHERE Description = 'Mixed Plastics';
+            
+
+            INSERT INTO recycling.BusinessMaterials (
+                BusinessID, MaterialID, CategoryName, Description, IsVerified
+            )
+            SELECT @BusinessID_7, MaterialID, 'plastic', 'PP', 1
+            FROM recycling.Materials
+            WHERE Description = 'PP';
+            
+
+            INSERT INTO recycling.BusinessMaterials (
+                BusinessID, MaterialID, CategoryName, Description, IsVerified
+            )
+            SELECT @BusinessID_7, MaterialID, 'paper', 'Mixed Paper (general)', 1
+            FROM recycling.Materials
+            WHERE Description = 'Mixed Paper (general)';
             
 
             INSERT INTO recycling.BusinessServices (
@@ -941,9 +956,11 @@ BEGIN TRY
         BEGIN CATCH
             INSERT INTO @ErrorLog (BusinessName, ErrorMessage)
             VALUES ('EMR Middlesbrough', ERROR_MESSAGE());
+            PRINT 'Skipping existing business with PlaceID: ' + 'ChIJDdHbbWztfkgRfxZB6PrexyY';
         END CATCH
         
 
+        IF NOT EXISTS (SELECT 1 FROM recycling.Businesses WHERE PlaceID = 'ChIJod7MksXtfkgROxRaqt_BiAE')
         BEGIN TRY
             DECLARE @BusinessID_8 INT;
             
@@ -1050,25 +1067,9 @@ BEGIN TRY
             INSERT INTO recycling.BusinessMaterials (
                 BusinessID, MaterialID, CategoryName, Description, IsVerified
             )
-            SELECT @BusinessID_8, MaterialID, 'plastic', 'PS', 1
+            SELECT @BusinessID_8, MaterialID, 'glass', 'Glass', 1
             FROM recycling.Materials
-            WHERE Description = 'PS';
-            
-
-            INSERT INTO recycling.BusinessMaterials (
-                BusinessID, MaterialID, CategoryName, Description, IsVerified
-            )
-            SELECT @BusinessID_8, MaterialID, 'paper', 'Mixed Paper (general)', 1
-            FROM recycling.Materials
-            WHERE Description = 'Mixed Paper (general)';
-            
-
-            INSERT INTO recycling.BusinessMaterials (
-                BusinessID, MaterialID, CategoryName, Description, IsVerified
-            )
-            SELECT @BusinessID_8, MaterialID, 'plastic', 'Mixed Plastics', 1
-            FROM recycling.Materials
-            WHERE Description = 'Mixed Plastics';
+            WHERE Description = 'Glass';
             
 
             INSERT INTO recycling.BusinessMaterials (
@@ -1082,9 +1083,25 @@ BEGIN TRY
             INSERT INTO recycling.BusinessMaterials (
                 BusinessID, MaterialID, CategoryName, Description, IsVerified
             )
-            SELECT @BusinessID_8, MaterialID, 'glass', 'Glass', 1
+            SELECT @BusinessID_8, MaterialID, 'plastic', 'Mixed Plastics', 1
             FROM recycling.Materials
-            WHERE Description = 'Glass';
+            WHERE Description = 'Mixed Plastics';
+            
+
+            INSERT INTO recycling.BusinessMaterials (
+                BusinessID, MaterialID, CategoryName, Description, IsVerified
+            )
+            SELECT @BusinessID_8, MaterialID, 'paper', 'Mixed Paper (general)', 1
+            FROM recycling.Materials
+            WHERE Description = 'Mixed Paper (general)';
+            
+
+            INSERT INTO recycling.BusinessMaterials (
+                BusinessID, MaterialID, CategoryName, Description, IsVerified
+            )
+            SELECT @BusinessID_8, MaterialID, 'plastic', 'PS', 1
+            FROM recycling.Materials
+            WHERE Description = 'PS';
             
 
             INSERT INTO recycling.BusinessServices (
@@ -1099,9 +1116,11 @@ BEGIN TRY
         BEGIN CATCH
             INSERT INTO @ErrorLog (BusinessName, ErrorMessage)
             VALUES ('Recycling IT', ERROR_MESSAGE());
+            PRINT 'Skipping existing business with PlaceID: ' + 'ChIJod7MksXtfkgROxRaqt_BiAE';
         END CATCH
         
 
+        IF NOT EXISTS (SELECT 1 FROM recycling.Businesses WHERE PlaceID = 'ChIJFXjAhortfkgREsue4n3basg')
         BEGIN TRY
             DECLARE @BusinessID_9 INT;
             
@@ -1147,9 +1166,11 @@ BEGIN TRY
         BEGIN CATCH
             INSERT INTO @ErrorLog (BusinessName, ErrorMessage)
             VALUES ('Trinity recycling center', ERROR_MESSAGE());
+            PRINT 'Skipping existing business with PlaceID: ' + 'ChIJFXjAhortfkgREsue4n3basg';
         END CATCH
         
 
+        IF NOT EXISTS (SELECT 1 FROM recycling.Businesses WHERE PlaceID = 'ChIJ0YHkS7btfkgR9i75ANg5WSY')
         BEGIN TRY
             DECLARE @BusinessID_10 INT;
             
@@ -1256,25 +1277,9 @@ BEGIN TRY
             INSERT INTO recycling.BusinessMaterials (
                 BusinessID, MaterialID, CategoryName, Description, IsVerified
             )
-            SELECT @BusinessID_10, MaterialID, 'plastic', 'PP', 1
+            SELECT @BusinessID_10, MaterialID, 'glass', 'Glass', 1
             FROM recycling.Materials
-            WHERE Description = 'PP';
-            
-
-            INSERT INTO recycling.BusinessMaterials (
-                BusinessID, MaterialID, CategoryName, Description, IsVerified
-            )
-            SELECT @BusinessID_10, MaterialID, 'plastic', 'PS', 1
-            FROM recycling.Materials
-            WHERE Description = 'PS';
-            
-
-            INSERT INTO recycling.BusinessMaterials (
-                BusinessID, MaterialID, CategoryName, Description, IsVerified
-            )
-            SELECT @BusinessID_10, MaterialID, 'paper', 'Mixed Paper (general)', 1
-            FROM recycling.Materials
-            WHERE Description = 'Mixed Paper (general)';
+            WHERE Description = 'Glass';
             
 
             INSERT INTO recycling.BusinessMaterials (
@@ -1288,9 +1293,25 @@ BEGIN TRY
             INSERT INTO recycling.BusinessMaterials (
                 BusinessID, MaterialID, CategoryName, Description, IsVerified
             )
-            SELECT @BusinessID_10, MaterialID, 'glass', 'Glass', 1
+            SELECT @BusinessID_10, MaterialID, 'plastic', 'PP', 1
             FROM recycling.Materials
-            WHERE Description = 'Glass';
+            WHERE Description = 'PP';
+            
+
+            INSERT INTO recycling.BusinessMaterials (
+                BusinessID, MaterialID, CategoryName, Description, IsVerified
+            )
+            SELECT @BusinessID_10, MaterialID, 'paper', 'Mixed Paper (general)', 1
+            FROM recycling.Materials
+            WHERE Description = 'Mixed Paper (general)';
+            
+
+            INSERT INTO recycling.BusinessMaterials (
+                BusinessID, MaterialID, CategoryName, Description, IsVerified
+            )
+            SELECT @BusinessID_10, MaterialID, 'plastic', 'PS', 1
+            FROM recycling.Materials
+            WHERE Description = 'PS';
             
 
             INSERT INTO recycling.BusinessServices (
@@ -1305,9 +1326,11 @@ BEGIN TRY
         BEGIN CATCH
             INSERT INTO @ErrorLog (BusinessName, ErrorMessage)
             VALUES ('J&B Recycling (South Tees)', ERROR_MESSAGE());
+            PRINT 'Skipping existing business with PlaceID: ' + 'ChIJ0YHkS7btfkgR9i75ANg5WSY';
         END CATCH
         
 
+        IF NOT EXISTS (SELECT 1 FROM recycling.Businesses WHERE PlaceID = 'ChIJL7GDg2vtfkgRtb3sM2NLVNI')
         BEGIN TRY
             DECLARE @BusinessID_11 INT;
             
@@ -1423,9 +1446,11 @@ BEGIN TRY
         BEGIN CATCH
             INSERT INTO @ErrorLog (BusinessName, ErrorMessage)
             VALUES ('Signif Recycling', ERROR_MESSAGE());
+            PRINT 'Skipping existing business with PlaceID: ' + 'ChIJL7GDg2vtfkgRtb3sM2NLVNI';
         END CATCH
         
 
+        IF NOT EXISTS (SELECT 1 FROM recycling.Businesses WHERE PlaceID = 'ChIJNx7_p3PufkgRQM1s2v_egaY')
         BEGIN TRY
             DECLARE @BusinessID_12 INT;
             
@@ -1541,9 +1566,11 @@ BEGIN TRY
         BEGIN CATCH
             INSERT INTO @ErrorLog (BusinessName, ErrorMessage)
             VALUES ('Scott Bros Recycling Ltd. South Tees Recycle Centre', ERROR_MESSAGE());
+            PRINT 'Skipping existing business with PlaceID: ' + 'ChIJNx7_p3PufkgRQM1s2v_egaY';
         END CATCH
         
 
+        IF NOT EXISTS (SELECT 1 FROM recycling.Businesses WHERE PlaceID = 'ChIJGxj380_tfkgRO8lcAtUfCZk')
         BEGIN TRY
             DECLARE @BusinessID_13 INT;
             
@@ -1659,9 +1686,11 @@ BEGIN TRY
         BEGIN CATCH
             INSERT INTO @ErrorLog (BusinessName, ErrorMessage)
             VALUES ('Scott Bros Ltd', ERROR_MESSAGE());
+            PRINT 'Skipping existing business with PlaceID: ' + 'ChIJGxj380_tfkgRO8lcAtUfCZk';
         END CATCH
         
 
+        IF NOT EXISTS (SELECT 1 FROM recycling.Businesses WHERE PlaceID = 'ChIJJ23SEUTtfkgRjPy7QxdNOm8')
         BEGIN TRY
             DECLARE @BusinessID_14 INT;
             
@@ -1777,9 +1806,11 @@ BEGIN TRY
         BEGIN CATCH
             INSERT INTO @ErrorLog (BusinessName, ErrorMessage)
             VALUES ('DCE Recycle ITLtd', ERROR_MESSAGE());
+            PRINT 'Skipping existing business with PlaceID: ' + 'ChIJJ23SEUTtfkgRjPy7QxdNOm8';
         END CATCH
         
 
+        IF NOT EXISTS (SELECT 1 FROM recycling.Businesses WHERE PlaceID = 'ChIJf37TiwrtfkgR72u17i8Ovlw')
         BEGIN TRY
             DECLARE @BusinessID_15 INT;
             
@@ -1895,9 +1926,11 @@ BEGIN TRY
         BEGIN CATCH
             INSERT INTO @ErrorLog (BusinessName, ErrorMessage)
             VALUES ('Middlesbrough Snap Skips Rental', ERROR_MESSAGE());
+            PRINT 'Skipping existing business with PlaceID: ' + 'ChIJf37TiwrtfkgR72u17i8Ovlw';
         END CATCH
         
 
+        IF NOT EXISTS (SELECT 1 FROM recycling.Businesses WHERE PlaceID = 'ChIJWS8wLADtfkgR6Dj8S6sBw5M')
         BEGIN TRY
             DECLARE @BusinessID_16 INT;
             
@@ -1943,9 +1976,11 @@ BEGIN TRY
         BEGIN CATCH
             INSERT INTO @ErrorLog (BusinessName, ErrorMessage)
             VALUES ('Quick stop recycle ltd', ERROR_MESSAGE());
+            PRINT 'Skipping existing business with PlaceID: ' + 'ChIJWS8wLADtfkgR6Dj8S6sBw5M';
         END CATCH
         
 
+        IF NOT EXISTS (SELECT 1 FROM recycling.Businesses WHERE PlaceID = 'ChIJQylBNzmTfkgR8sV-LPHVyng')
         BEGIN TRY
             DECLARE @BusinessID_17 INT;
             
@@ -2052,14 +2087,6 @@ BEGIN TRY
             INSERT INTO recycling.BusinessMaterials (
                 BusinessID, MaterialID, CategoryName, Description, IsVerified
             )
-            SELECT @BusinessID_17, MaterialID, 'metal', 'Mixed Metals', 1
-            FROM recycling.Materials
-            WHERE Description = 'Mixed Metals';
-            
-
-            INSERT INTO recycling.BusinessMaterials (
-                BusinessID, MaterialID, CategoryName, Description, IsVerified
-            )
             SELECT @BusinessID_17, MaterialID, 'plastic', 'PP', 1
             FROM recycling.Materials
             WHERE Description = 'PP';
@@ -2081,6 +2108,14 @@ BEGIN TRY
             WHERE Description = 'PS';
             
 
+            INSERT INTO recycling.BusinessMaterials (
+                BusinessID, MaterialID, CategoryName, Description, IsVerified
+            )
+            SELECT @BusinessID_17, MaterialID, 'metal', 'Mixed Metals', 1
+            FROM recycling.Materials
+            WHERE Description = 'Mixed Metals';
+            
+
             INSERT INTO recycling.BusinessServices (
                 BusinessID, ServiceName, Description
             ) VALUES (
@@ -2093,9 +2128,11 @@ BEGIN TRY
         BEGIN CATCH
             INSERT INTO @ErrorLog (BusinessName, ErrorMessage)
             VALUES ('Smart Recycling - Cash 4 Clothes', ERROR_MESSAGE());
+            PRINT 'Skipping existing business with PlaceID: ' + 'ChIJQylBNzmTfkgR8sV-LPHVyng';
         END CATCH
         
 
+        IF NOT EXISTS (SELECT 1 FROM recycling.Businesses WHERE PlaceID = 'ChIJg51MqGrtfkgR0sz_zUHu3Hw')
         BEGIN TRY
             DECLARE @BusinessID_18 INT;
             
@@ -2211,9 +2248,11 @@ BEGIN TRY
         BEGIN CATCH
             INSERT INTO @ErrorLog (BusinessName, ErrorMessage)
             VALUES ('Cupral', ERROR_MESSAGE());
+            PRINT 'Skipping existing business with PlaceID: ' + 'ChIJg51MqGrtfkgR0sz_zUHu3Hw';
         END CATCH
         
 
+        IF NOT EXISTS (SELECT 1 FROM recycling.Businesses WHERE PlaceID = 'ChIJXyOI82DtfkgRDMUo_RGtESw')
         BEGIN TRY
             DECLARE @BusinessID_19 INT;
             
@@ -2320,14 +2359,6 @@ BEGIN TRY
             INSERT INTO recycling.BusinessMaterials (
                 BusinessID, MaterialID, CategoryName, Description, IsVerified
             )
-            SELECT @BusinessID_19, MaterialID, 'metal', 'Mixed Metals', 1
-            FROM recycling.Materials
-            WHERE Description = 'Mixed Metals';
-            
-
-            INSERT INTO recycling.BusinessMaterials (
-                BusinessID, MaterialID, CategoryName, Description, IsVerified
-            )
             SELECT @BusinessID_19, MaterialID, 'plastic', 'PP', 1
             FROM recycling.Materials
             WHERE Description = 'PP';
@@ -2349,6 +2380,14 @@ BEGIN TRY
             WHERE Description = 'PS';
             
 
+            INSERT INTO recycling.BusinessMaterials (
+                BusinessID, MaterialID, CategoryName, Description, IsVerified
+            )
+            SELECT @BusinessID_19, MaterialID, 'metal', 'Mixed Metals', 1
+            FROM recycling.Materials
+            WHERE Description = 'Mixed Metals';
+            
+
             INSERT INTO recycling.BusinessServices (
                 BusinessID, ServiceName, Description
             ) VALUES (
@@ -2361,6 +2400,7 @@ BEGIN TRY
         BEGIN CATCH
             INSERT INTO @ErrorLog (BusinessName, ErrorMessage)
             VALUES ('Smart Recycling - Cash 4 Clothes', ERROR_MESSAGE());
+            PRINT 'Skipping existing business with PlaceID: ' + 'ChIJXyOI82DtfkgRDMUo_RGtESw';
         END CATCH
         
     COMMIT TRANSACTION;

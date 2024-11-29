@@ -190,7 +190,9 @@ def generate_sql_statements(json_data: List[Dict]) -> str:
         # Use unique variable name for each business
         business_id_var = f"@BusinessID_{i}"
         
+        # Check if place_id already exists in the database
         sql_statements.append(f"""
+        IF NOT EXISTS (SELECT 1 FROM recycling.Businesses WHERE PlaceID = '{business['place_id']}')
         BEGIN TRY
             DECLARE {business_id_var} INT;
             
@@ -274,6 +276,7 @@ def generate_sql_statements(json_data: List[Dict]) -> str:
         BEGIN CATCH
             INSERT INTO @ErrorLog (BusinessName, ErrorMessage)
             VALUES ('{business['name'].replace("'", "''")}', ERROR_MESSAGE());
+            PRINT 'Skipping existing business with PlaceID: ' + '{business['place_id']}';
         END CATCH
         """)
     
