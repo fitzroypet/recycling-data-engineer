@@ -1,6 +1,6 @@
 # Recycling Data Engineering Project
 
-This project processes recycling business data from JSON files and loads it into a structured SQL database. It handles business information, operating hours, materials accepted, and services offered by recycling facilities in the Middlesbrough, UK area.
+This project processes recycling business data from JSON files and loads it into a structured SQL database. It handles business information, operating hours, materials accepted, and services offered by recycling facilities by city and country.
 
 ## Project Structure
 
